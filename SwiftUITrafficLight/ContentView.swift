@@ -15,8 +15,6 @@ struct ContentView: View {
     @State private var yellow =  CircleView(color: .yellow, alpha: alphaIsOff)
     @State private var green = CircleView(color: .green, alpha: alphaIsOff)
     
-    @State private var text = "Start"
-    
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -28,9 +26,10 @@ struct ContentView: View {
                 Spacer()
                 Button(action: {
                     choiseColorForLightning()
-                    self.text = "NEXT"
                 }) {
-                    Text(text)
+                    Text(
+                        currentColor != .defaultState ? "NEXT" : "Start"
+                    )
                         .font(.largeTitle).bold()
                 }
                 .frame(width: 200, height: 100)
